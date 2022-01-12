@@ -17,7 +17,7 @@
             <form>
               <div class="row">
                   <div class="form-group my-3">
-                    <label for="idcust" class="form-label">Id Karyawan</label>
+                    <label for="idKaryawan" class="form-label">Id Karyawan</label>
                     <input type="text" class="form-control" id="idKaryawan" placeholder="Id Kaeyawan">
                   </div>
                   <div class="form-group my-3">
@@ -55,11 +55,12 @@
     <script>
       function save(){
             var body = {
-            idcust:$("#idcust").val(),
-            nama:$("#nama").val(),
-            nohp:$("#nohp").val(),
-            jenis:$("#jenis").val(),
-            jumlah:$("#jumlah").val()
+              idKaryawan:$("#idKaryawan").val(),
+              namaKaryawan:$("#namaKaryawan").val(),
+              jabatan:$("#jabatan").val(),
+              alamat:$("#alamat").val(),
+              jenisKelamin:$("#jenisKelamin").val(),
+              noTelpon:$("#noTelpon").val()
             }
             var json = JSON.stringify(body)
             console.log(json)
@@ -70,7 +71,10 @@
                 headers:{ "Content-Type": "application/json" }
             })
             .then((result) => {
-                console.log("Data Berhasil Diedit")   
+                console.log("Data Berhasil Diedit")  
+                
+                window.location.href="/viewData.html"
+
             }).catch((err) => {
                 console.log(error)
             });
@@ -78,23 +82,24 @@
 
         function getData(){
             var url = new URL($(location).attr("href"))
-            var params = url.searchParams.get("idcust")
+            var params = url.searchParams.get("idKaryawan")
             console.log(params)
             axios.get(
-                `http://localhost:8080/datakaryawan/json/${params}`
+                `http://localhost:8080/datakaryawan/employees/${params}`
             ).then((result) => {
                 console.log(result)
-                $("#idcust").val(result.data.idcust);
-                $("#nama").val(result.data.nama);
-                $("#nohp").val(result.data.nohp);
-                $("#jenis").val(result.data.jenis);
-                $("#jumlah").val(result.data.jumlah)
+                $("#idKaryawan").val(result.data.idKaryawan);
+                $("#namaKaryawan").val(result.data.namaKaryawan);
+                $("#jabatan").val(result.data.jabatan);
+                $("#alamat").val(result.data.alamat);
+                $("#jenisKelamin").val(result.data.jenisKelamin);
+                $("#noTelpon").val(result.data.noTelpon)
             }).catch((err) => {
                 console.log(error)
             });
         }
 
-      var url ="http://localhost:8080/datakaryawan/json";
+      var url ="http://localhost:8080/datakaryawan/employees";
       getData()
     </script>
 

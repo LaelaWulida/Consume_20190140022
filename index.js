@@ -15,6 +15,15 @@ function signOut() {
   });
 }
 
+$(document).ready(function() {
+  $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#dataTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+  });
+});
+
 $("#dataTable").ready(function () {
   var tabel = document.getElementById("dataTable")
   getAll().then(response => {
@@ -36,8 +45,8 @@ $("#dataTable").ready(function () {
           td5.innerHTML = response[i]['jenisKelamin']
           td6.innerHTML = response[i]['noTelpon']
           td7.innerHTML = `<div class ="justify content-center">
-          <a class="btn ms-2" style="background-color: #858ab3; border:none;" href="updateData.html?idcust=${response[i].idcust}">Edit</a>
-          <button type ="button" class="btn ms-2" style="background-color: #858ab3; border:none;" onclick="del(${response[i].idcust});">Delete</button>
+          <a class="btn ms-2" style="background-color: #2b7075; border:none;" href="updateData.html?idKaryawan=${response[i].idKaryawan}">Edit</a>
+          <button type ="button" class="btn ms-2" style="background-color: #2b7075; border:none;" onclick="del(${response[i].idKaryawan});">Delete</button>
           </div>`
           }
       }

@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="index.js">
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="viewData.html">Data Karyawan</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="navbar-nav ms-auto">
+          <!-- <a class="nav-link active" aria-current="page" href="addData.html">Tambah Data</a> -->
+        </div>
+      </div>
+    </div>
+  </nav>
     <section>
         <div class="container">
             <h4 style="margin-top: 50px;"> Add Data</h4>
@@ -55,11 +68,12 @@
     <script>
       function save(){
         var body = {
-        idcust:$("#idcust").val(),
-        nama:$("#nama").val(),
-        nohp:$("#nohp").val(),
-        jenis:$("#jenis").val(),
-        jumlah:$("#jumlah").val()
+        idKaryawan:$("#idKaryawan").val(),
+        namaKaryawan:$("#namaKaryawan").val(),
+        jabatan:$("#jabatan").val(),
+        alamat:$("#alamat").val(),
+        jenisKelamin:$("#jenisKelamin").val(),
+        noTelpon:$("#noTelpon").val()
         }
         var json = JSON.stringify(body)
         console.log(json)
@@ -76,7 +90,7 @@
         });
     }
   
-      var url ="http://localhost:8080/datakaryawan/json";
+      var url ="http://localhost:8080/datakaryawan/employees";
     </script>
 
 </html>
