@@ -46,7 +46,7 @@ $("#dataTable").ready(function () {
           td6.innerHTML = response[i]['noTelpon']
           td7.innerHTML = `<div class ="justify content-center">
           <a class="btn ms-2" style="background-color: #2b7075; border:none;" href="updateData.html?idKaryawan=${response[i].idKaryawan}">Edit</a>
-          <button type ="button" class="btn ms-2" style="background-color: #2b7075; border:none;" onclick="del(${response[i].idKaryawan});">Delete</button>
+          <button type ="button" class="btn ms-2" style="background-color: #2b7075; border:none;" onclick="del(${response[i].idKaryawan});">Hapus</button>
           </div>`
           }
       }
